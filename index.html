@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web技术知识点展示</title>
+    <style>
+        /* 基础样式 */
+        body {
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 主容器 */
+        .container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background: linear-gradient(135deg, #f9f9f9 0%, #eef2f5 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+        
+        /* 中央图标 */
+        .center-icon {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            border-radius: 50%;
+            margin: 0 auto;
+            top: 180px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .center-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.6);
+        }
+        
+        .center-icon span {
+            display: block;
+            text-align: center;
+            margin: 5px 0;
+        }
+        
+        /* 知识点框 */
+        .knowledge-box {
+            position: absolute;
+            width: 240px;
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+        
+        .knowledge-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .box-html {
+            top: 60px;
+            left: 60px;
+            border-top: 6px solid #E44D26;
+        }
+        
+        .box-css {
+            top: 60px;
+            right: 60px;
+            border-top: 6px solid #264DE4;
+        }
+        
+        .box-js {
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-top: 6px solid #F0DB4F;
+        }
+        
+        .knowledge-box h2 {
+            margin-top: 0;
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+        
+        /* 列表样式 */
+        .knowledge-box ul {
+            padding-left: 25px;
+            margin: 0;
+            list-style-type: none;
+        }
+        
+        .knowledge-box li {
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #555;
+            padding-left: 25px;
+            transition: all 0.2s ease;
+        }
+        
+        .knowledge-box li:hover {
+            color: #222;
+            transform: translateX(5px);
+        }
+        
+        .knowledge-box li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: inherit;
+            font-size: 20px;
+            line-height: 1;
+        }
+        
+        .box-html li::before {
+            color: #E44D26;
+        }
+        
+        .box-css li::before {
+            color: #264DE4;
+        }
+        
+        .box-js li::before {
+            color: #F0DB4F;
+        }
+        
+        /* 连接线 */
+        .connector {
+            position: absolute;
+            background-color: #ddd;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .connector-1 {
+            width: 3px;
+            height: 120px;
+            left: 180px;
+            top: 180px;
+            background: linear-gradient(to bottom, #E44D26, #4CAF50);
+        }
+        
+        .connector-2 {
+            width: 3px;
+            height: 120px;
+            right: 180px;
+            top: 180px;
+            background: linear-gradient(to bottom, #264DE4, #4CAF50);
+        }
+        
+        .connector-3 {
+            width: 3px;
+            height: 120px;
+            left: 50%;
+            bottom: 180px;
+            transform: translateX(-50%);
+            background: linear-gradient(to bottom, #4CAF50, #F0DB4F);
+        }
+        
+        .container:hover .connector {
+            height: 140px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 中央图标 -->
+        <div class="center-icon">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JS</span>
+        </div>
+        
+        <!-- 连接线 -->
+        <div class="connector connector-1"></div>
+        <div class="connector connector-2"></div>
+        <div class="connector connector-3"></div>
+        
+        <!-- HTML知识点框 -->
+        <div class="knowledge-box box-html">
+            <h2>HTML基础/HTML5</h2>
+            <ul>
+                <li>HTML标签与属性</li>
+                <li>HTML元素(块级/行内)</li>
+                <li>HTML标题标签(h1-h6)</li>
+                <li>HTML文本格式化</li>
+                <li>HTML列表</li>
+                <li>HTML表格</li>
+            </ul>
+        </div>
+        
+        <!-- CSS知识点框 -->
+        <div class="knowledge-box box-css">
+            <h2>CSS基础/CSS3</h2>
+            <ul>
+                <li>CSS选择器</li>
+                <li>CSS盒模型</li>
+                <li>CSS属性与定位</li>
+                <li>CSS添加背景与颜色</li>
+                <li>CSS添加文字样式</li>
+                <li>CSS添加边框效果</li>
+            </ul>
+        </div>
+        
+        <!-- JavaScript知识点框 -->
+        <div class="knowledge-box box-js">
+            <h2>JavaScript</h2>
+            <ul>
+                <li>数据类型</li>
+                <li>变量</li>
+                <li>基本语法</li>
+                <li>BOM对象</li>
+                <li>DOM对象</li>
+                <li>JS事件</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
